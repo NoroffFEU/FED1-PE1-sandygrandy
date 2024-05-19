@@ -1,0 +1,303 @@
+.wrapper {
+  background-color: #2F3828;
+  max-width: 100%;
+  margin-left: 10vw;
+  margin-right: 10vw;
+  padding: 0;
+}
+
+body {
+    background-color: #2F3828;
+    margin: 0;
+}
+
+header nav {
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+header nav ul li {
+    list-style: none;
+    font-family: montserrat;
+    display: inline;
+    gap: 15px;
+    text-wrap: nowrap;
+    padding-left: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #FFFB99;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+.slideshow-container {
+    width: 100%;
+    height: 300px;
+    margin-bottom: 80px;
+    overflow: hidden;
+    position: relative;
+    
+}
+  
+.slideshow {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+    transition: transform 0.5s;
+}
+  
+.slideshow img {
+    width: 100%;
+    min-height: 100%;
+    float: left;
+    display: inline;
+    position: absolute;
+    object-fit: cover;
+    
+}
+
+#prev,
+#next {
+position: absolute;
+z-index: 9999;
+display: block;
+top: 120px;
+width: 40px;
+height: 40px;
+text-indent: -9999px;
+}
+
+#prev {
+left: 20px;
+background: url("../icons/arrow-left.png");
+background-size: 40px 40px;
+background-repeat: no-repeat;
+}
+
+#next {
+right: 20px;
+background: url("../icons/arrow-right.png");
+background-size: 40px 40px;
+background-repeat: no-repeat;
+}
+
+.h1-center {
+    font-family: abril fatface;
+    color: #FFFB99;
+    text-align: center;
+    margin-bottom: 20px;
+
+}
+
+.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: space-between;
+    max-width: 100%;
+    overflow: hidden;
+
+    gap: 40px;
+}
+
+.grid-item {
+    justify-items: center;
+    text-align: center;
+}
+
+.grid-item img {
+    max-width: 100%;
+    max-width: auto;
+    
+    object-fit: fill;
+    object-position: center;
+}
+
+.button-style {
+    background-color: #FFFB99;
+    color: #2F3828;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 15px;
+
+    font-family: montserrat;
+    font-weight: normal;
+}
+
+footer {
+    margin-top: 50px;
+    height: 25vh;
+    width: 100%;
+
+    padding: 0;
+
+    background-color: #394530;
+
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.social-media {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.social-media img {
+    max-width: 80px;
+}
+
+.documents {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    
+}
+
+.documents li {
+    list-style: none;
+    padding-bottom: 5px;
+
+}
+
+.documents li a {
+    text-decoration: none;
+    color: #FFFB99;
+}
+
+.documents li a:hover {
+    text-decoration: underline;
+}
+
+/* Blog page */
+
+#recipe-img {
+    max-width: 100%;
+    max-width: auto;
+    max-height: 600px;
+    object-fit: fill;
+    object-position: center;
+}
+
+#chef-img {
+    max-width: 100%;
+    max-width: auto;
+    max-height: 350px;
+    object-fit: fill;
+    object-position: center;
+
+    margin-top: 60px;
+}
+
+.blog-wrapper {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 50px;
+}
+#recipe-title, #date-published, #recipe-content, #author-description, #ingredients{
+    font-family: montserrat;
+    color: #FFFB99;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+#recipe-title, #blog-post-title, #author-name {
+    font-family: abril fatface;
+    color: #FFFB99;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.red {
+    background-color: #f00;
+    color: white;
+}
+
+.green {
+    background-color: #0f0;
+    color: black;
+}
+
+.hidden {
+    display: none;
+}
+
+#ingredient-li li {
+    color: #FFFB99;
+    list-style: square;
+    padding-bottom: 5px;
+}
+
+
+/* Login page */
+
+.login-register {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    margin-top: 50px;
+}
+
+.login input {
+    display: block;
+    padding-top: 10px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.login {
+    background-color: #80C95B;
+    border-radius: 35px;
+    padding: 50px;
+}
+
+#username {
+    width: 50%;
+    height: 25px;
+}
+
+#password {
+    width: 50%;
+    height: 25px;
+}
+
+.register {
+    background-color: #FFFB99;
+    border-radius: 35px;
+    padding: 50px;
+
+    text-align: center;
+}
+
+#register-button {
+    background-color: #2F3828;
+    color: #FFFB99;
+}
+
+#login-title, #register-title {
+    font-family: abril fatface;
+    color: #2F3828;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-p, #register-text {
+    font-family: montserrat;
+    color: #2F3828;
+    text-align: center;
+    margin-bottom: 20px;
+}

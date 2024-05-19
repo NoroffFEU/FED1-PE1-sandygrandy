@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Urban Eats is a website that provides recipes for people who want to cook at home.">
+    <title>Urban eats login page</title>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+    <div class="wrapper">
+
+        <header>
+            <nav>
+                <a href="./index.html"><img src="./logo/P-Logo.png" alt="Urban Eats Logo"></a>
+                <ul>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./about.html">About</a></li>
+                    <li><a href="./recipes.html">Recipes</a></li>
+                    <li><a href="./login.html">Log in</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="login-register">
+            <section class="login">
+                <h1 id="login-title">Log in</h1>
+                <form action="login.php" method="POST">
+                    <label for="username" class="login-p">Username*:</label>
+                    <input type="text" id="username" name="username" required>
+                    <label for="password" class="login-p">Password*:</label>
+                    <input type="password" id="password" name="password" required>
+                    <button type="submit" class="button-style">Log in</button>
+                </form>
+            </section>
+
+            <section class="register">
+                <h2 id="register-title">No account?</h2>
+                <p id="register-text">You're just a few steps away from joining Urban eats. Fill out the form below and start enjoying all the perks of being a member!</p>
+                <a href="./register.html"><button class="button-style" id="register-button">Sign up here</button></a>
+            </section>
+        </div>
+
+    </div>
+</body>
+</html>
