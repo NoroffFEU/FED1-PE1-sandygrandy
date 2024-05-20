@@ -2,14 +2,16 @@ function sliderInit() {
     const slideshows = document.querySelectorAll('.slideshow')
 
     slideshows.forEach(slideshow => {
-        const images = slideshow.querySelectorAll('img')
-        images.forEach((img, i) => {
-            img.style.left = `${(i * img.clientWidth)}px`
-        })
+        const slideItems = slideshow.children
+        for (let i = 0; i < slideItems.length; i++) {
+            const item = slideItems[i]
+            item.style.left = `${(i * item.clientWidth)}px`
+        }
 
         let state = {
             current: 0,
-            imageCount: images.length
+            imageCount: slideItems.length,
+            slideshow
         }
 
         const prevButton = document.querySelector(slideshow.attributes['data-cycle-prev'].value)
@@ -17,6 +19,13 @@ function sliderInit() {
 
         prevButton.addEventListener('click', sliderPrev.bind(state))
         nextButton.addEventListener('click', slidernext.bind(state))
+
+        window.addEventListener('resize', () => {
+            for (let i = 0; i < slideItems.length; i++) {
+                const item = slideItems[i]
+                item.style.left = `${(i * item.clientWidth)}px`
+            }
+        })
     })
 }
 
@@ -25,7 +34,7 @@ function sliderPrev() {
     if (this.current < 0) {
         this.current = this.imageCount - 1
     }
-    document.querySelector('.slideshow').style.transform = `translateX(-${this.current * 100}%)`
+    updatePosition.call(this)
 }
 
 function slidernext() {
@@ -33,7 +42,11 @@ function slidernext() {
     if (this.current >= this.imageCount) {
         this.current = 0
     }
-    document.querySelector('.slideshow').style.transform = `translateX(-${this.current * 100}%)`
+    updatePosition.call(this)
+}
+
+function updatePosition() {
+    this.slideshow.style.transform = `translateX(-${this.current * 100}%)`
 }
 
 sliderInit()

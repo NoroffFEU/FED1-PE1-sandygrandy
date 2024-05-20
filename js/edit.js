@@ -14,10 +14,9 @@ async function loadData(id) {
         const res = await Api.blogs.getSingle(id)
         if (res.ok) {
             const parsedRes = await res.json()
-            const data = parsedRes.data
-            titleInput.value = data.title
-            imageInput.value = data.media.url
-            descriptionInput.value = data.body
+            titleInput.value = parsedRes.data.title
+            imageInput.value = parsedRes.data.media.url
+            descriptionInput.value = parsedRes.data.body
         } else {
             console.error('Error:', res)
         }

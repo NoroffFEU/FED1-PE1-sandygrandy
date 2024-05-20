@@ -12,7 +12,7 @@ function getLoggedInUser() {
         return parsedUser
     }
         
-    throw new Error('No user found')
+    return false
 }
 
 export default {
@@ -65,25 +65,18 @@ export default {
                 query.append('page', page)
             }
 
-            const user = getLoggedInUser()
-            const response = await fetch(`${apiBaseUrl}/blog/posts/Sandra?${query}`, {
-                headers: {
-                    Authorization: `Bearer ${user.accessToken}`,
-                },
-            })
+            const response = await fetch(`${apiBaseUrl}/blog/posts/Sandra?${query}`)
             return response
         },
         getSingle: async function (id) {
-            const user = getLoggedInUser()
-            const response = await fetch(`${apiBaseUrl}/blog/posts/Sandra/${id}`, {
-                headers: {
-                    Authorization: `Bearer ${user.accessToken}`,
-                },
-            })
+            const response = await fetch(`${apiBaseUrl}/blog/posts/Sandra/${id}`)
             return response
         },
         create: async function (blog) {
             const user = getLoggedInUser()
+            if (!user) {
+                throw new Error('You must be logged in to create a blog post')
+            }
             const response = await fetch(`${apiBaseUrl}/blog/posts/Sandra`, {
                 method: 'POST',
                 headers: {
@@ -96,6 +89,9 @@ export default {
         },
         delete: async function (id) {
             const user = getLoggedInUser()
+            if (!user) {
+                throw new Error('You must be logged in to delete a blog post')
+            }
             const response = await fetch(`${apiBaseUrl}/blog/posts/Sandra/${id}`, {
                 method: 'DELETE',
                 headers: {
@@ -106,6 +102,9 @@ export default {
         },
         update: async function (id, blog) {
             const user = getLoggedInUser()
+            if (!user) {
+                throw new Error('You must be logged in to edit a blog post')
+            }
             const response = await fetch(`${apiBaseUrl}/blog/posts/Sandra/${id}`, {
                 method: 'PUT',
                 headers: {
