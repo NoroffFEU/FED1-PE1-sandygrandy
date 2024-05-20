@@ -10,10 +10,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
     <script type="module" src="../js/shared.js"></script>
+    <script type="module" src="../js/edit.js"></script>
 </head>
 <body>
     <div class="wrapper">
-
         <header>
             <nav>
                 <a href="./index.html"><img src="./logo/P-Logo.png" alt="Urban Eats Logo"></a>
@@ -27,36 +27,22 @@
             </nav>
         </header>
 
-    <div class="blog-wrapper">
-    <section>
-        <h1 id="recipe-title">Recipe title here</h1>
-        <p id="date-published">Date of publishment here</p>
-        <img src="./images/grid-images/monika-grabkowska-P1aohbiT-EY-unsplash.jpg" id="recipe-img">
-        <h3 id="blog-post-title">Blog post title</h3>
-        <p id="recipe-content">Recipe instructions here</p>
-    </section>
-    
-    <section>
-        <div class="hidden">
-            <a href="./edit.html" ><button class="button-style green">Edit post</button></a>
-            <button class="button-style red">Delete post</button>
-        </div>
-        <img src="./images/chef-images/febrian-zakaria-SiQgni-cqFg-unsplash.jpg" alt="Jamie, the chef behind this recipe" id="chef-img">
-        <h4 id="author-name">Author:</h4>
-        <p id="author-description">My name is Jamie and <br>
-        my passion is urban food. <br>
-        I own a resturant in New York <br>
-        and I am the owner of this blog.</p>
+        <section class="edit">
+            <form id="edit">
+                <label for="recipeTitle">Recipe Title</label>
+                <input type="text" id="recipeTitle" name="recipeTitle">
 
-        <h4 id="ingredients">Ingredient list:</h4>
-        <ul id="ingredient-li">
-            <li>Chicken</li>
-            <li>Ramen noodles</li>
-            <li>Chicken stock</li>
-            <li>Pak choy</li>
-        </ul>
-    </section>
-    </div>
+                <label for="url">Image</label>
+                <input type="url" id="image-url" name="url">
+
+                <label for="description">Recipe instructions</label>
+                <textarea id="description" name="description"></textarea>
+
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+
+    
 
     <footer>
         <div class="social-media">

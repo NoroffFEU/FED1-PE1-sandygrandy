@@ -1,22 +1,32 @@
-const apiBaseUrl = 'https://v2.api.noroff.dev';
+const apiBaseUrl = 'https://v2.api.noroff.dev'
 
 // Husk login
 // SanLan78461@stud.noroff.no
 // panda123
 
-function getUser() {
-    const user = localStorage.getItem('user');
-    const parsedUser = JSON.parse(user);
+function getLoggedInUser() {
+    const user = localStorage.getItem('user')
+    const parsedUser = JSON.parse(user)
 
     if (parsedUser) {
         return parsedUser
     }
         
-    throw new Error('No user found');
+    throw new Error('No user found')
 }
 
 export default {
     auth: {
+        register: async function (name, email, password, avatar, banner) {
+            const response = await fetch(`${apiBaseUrl}/auth/register`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name, email, password, avatar, banner }),
+            })
+            return response
+        },
         login: async function (email, password) {
             const response = await fetch(`${apiBaseUrl}/auth/login`, {
                 method: 'POST',
@@ -24,75 +34,87 @@ export default {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({ email, password }),
-            });
-            const data = await response.json();
-            localStorage.setItem('user', data);
-            return await response.json();
+            })
+            
+            const res = await response.json()
+
+            if (!response.ok) {
+                console.log('Error:', res.message)
+                return false
+            }
+            
+            localStorage.setItem('user', JSON.stringify(res.data))
+            return true
         },
-        register: async function (name, email, password, avatar, banner) {
-            // TODO: Finish this method
-            const response = await fetch(`${apiBaseUrl}/auth/register`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ name, email, password, avatar, banner }),
-            });
-            return await response.json();
+        getLoggedInUser: function () {
+            return getLoggedInUser()
         },
+        logout: function () {
+            localStorage.removeItem('user')
+        }
     },
     blogs: {
-        getAll: async function () {
-            const user = getUser()
-            const response = await fetch(`${apiBaseUrl}/blogs/${user.name}`, {
+        getMany: async function (limit, page) {
+            const query = new URLSearchParams();
+
+            if (limit) {
+                query.append('limit', limit)
+            }
+
+            if (page) {
+                query.append('page', page)
+            }
+
+            const user = getLoggedInUser()
+            const response = await fetch(`${apiBaseUrl}/blog/posts/Sandra?${query}`, {
                 headers: {
                     Authorization: `Bearer ${user.accessToken}`,
                 },
-            });
-            return response.json();
+            })
+            return response
         },
         getSingle: async function (id) {
-            const user = getUser()
-            const response = await fetch(`${apiBaseUrl}/blogs/${user.name}/${id}`, {
+            const user = getLoggedInUser()
+            const response = await fetch(`${apiBaseUrl}/blog/posts/Sandra/${id}`, {
                 headers: {
                     Authorization: `Bearer ${user.accessToken}`,
                 },
-            });
-            return await response.json();
+            })
+            return response
         },
-        create: async function (title, body, tags, media) {
-            const user = getUser()
-            const response = await fetch(`${apiBaseUrl}/blogs/${user.name}`, {
+        create: async function (blog) {
+            const user = getLoggedInUser()
+            const response = await fetch(`${apiBaseUrl}/blog/posts/Sandra`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${user.accessToken}`,
                 },
-                body: JSON.stringify({ title, body, tags, media }),
-            });
-            return await response.json();
+                body: JSON.stringify(blog),
+            })
+            return response
         },
         delete: async function (id) {
-            const user = getUser()
-            const response = await fetch(`${apiBaseUrl}/blogs/${user.name}/${id}`, {
+            const user = getLoggedInUser()
+            const response = await fetch(`${apiBaseUrl}/blog/posts/Sandra/${id}`, {
                 method: 'DELETE',
                 headers: {
                     Authorization: `Bearer ${user.accessToken}`,
                 },
-            });
-            return await response.json();
+            })
+            return response
         },
-        update: async function (id, title, body, tags, media) {
-            const user = getUser()
-            const response = await fetch(`${apiBaseUrl}/blogs/${user.name}/${id}`, {
+        update: async function (id, blog) {
+            const user = getLoggedInUser()
+            const response = await fetch(`${apiBaseUrl}/blog/posts/Sandra/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${user.accessToken}`,
                 },
-                body: JSON.stringify({ title, body, tags, media }),
-            });
-            return await response.json();
+                body: JSON.stringify(blog),
+            })
+            return response
         },
     },
 

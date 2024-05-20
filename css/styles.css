@@ -37,6 +37,14 @@ nav a:hover {
     text-decoration: underline;
 }
 
+body.logged-in #login-nav {
+    display: none;
+}
+
+body:not(.logged-in) #logout-nav {
+    display: none;
+}
+
 .slideshow-container {
     width: 100%;
     height: 300px;
@@ -115,9 +123,9 @@ background-repeat: no-repeat;
 .grid-item img {
     max-width: 100%;
     max-width: auto;
+    height: 80%;
     
-    object-fit: fill;
-    object-position: center;
+    object-fit: cover;
 }
 
 .button-style {
@@ -232,9 +240,9 @@ footer {
     color: black;
 }
 
-.hidden {
+/* .hidden {
     display: none;
-}
+} */
 
 #ingredient-li li {
     color: #FFFB99;
@@ -254,38 +262,52 @@ footer {
 
 .login input {
     display: block;
-    padding-top: 10px;
     margin-top: 10px;
     margin-bottom: 5px;
+
+    /* margin-left: auto;
+    margin-right: auto; */
 }
 
 .login {
     background-color: #80C95B;
     border-radius: 35px;
-    padding: 50px;
+    padding: 60px;
+    
 }
 
-#username {
-    width: 50%;
+.login-button {
+    width: 80%;
+    min-width: 50%;
+    margin-top: 10px;
+}
+
+#username, #email, #password {
+    width: 80%;
     height: 25px;
 }
 
-#password {
-    width: 50%;
-    height: 25px;
-}
-
-.register {
+.register-side {
     background-color: #FFFB99;
     border-radius: 35px;
-    padding: 50px;
+    padding: 60px;
 
     text-align: center;
+
+    justify-items: end;
+}
+
+#register-text {
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 #register-button {
     background-color: #2F3828;
     color: #FFFB99;
+    width: 80%;
+    min-width: 50%;
+    
 }
 
 #login-title, #register-title {
@@ -295,9 +317,65 @@ footer {
     margin-bottom: 20px;
 }
 
-.login-p, #register-text {
+.login-p, #register-text, form label {
     font-family: montserrat;
     color: #2F3828;
     text-align: center;
     margin-bottom: 20px;
+}
+
+
+/* Register page */
+
+.register {
+    width: 30vw;
+    background-color: #FFFB99;
+    border-radius: 35px;
+    margin-right: auto;
+    margin-left: auto;
+
+    padding: 60px;
+
+}
+
+.register input {
+    display: block;
+    
+    margin-bottom: 10px;
+}
+
+.register-dark {
+    background-color: #2F3828;
+    color: #FFFB99;
+
+    width: 80%;
+    margin-top: 20px;
+}
+
+/* Edit page */
+
+.edit {
+    height: 50vh;
+    padding: 60px;
+    background-color:#394530;
+
+}
+
+.edit label {
+    font-family: montserrat;
+    color: #FFFB99;
+    text-align: left;
+    margin-bottom: 20px
+}
+
+.edit textarea {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.edit input {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 5px;
 }
