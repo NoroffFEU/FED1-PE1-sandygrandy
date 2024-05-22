@@ -54,7 +54,7 @@ export default {
         }
     },
     blogs: {
-        getMany: async function (limit, page) {
+        getMany: async function (limit, page, sortBy, sortDir) {
             const query = new URLSearchParams();
 
             if (limit) {
@@ -63,6 +63,14 @@ export default {
 
             if (page) {
                 query.append('page', page)
+            }
+
+            if (sortBy) {
+                query.append('sort', sortBy)
+            }
+
+            if (sortDir) {
+                query.append('sortOrder', sortDir)
             }
 
             const response = await fetch(`${apiBaseUrl}/blog/posts/Sandra?${query}`)
@@ -116,5 +124,4 @@ export default {
             return response
         },
     },
-
 }

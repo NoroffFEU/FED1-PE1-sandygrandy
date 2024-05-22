@@ -528,6 +528,58 @@ footer {
   padding-bottom: 5px;
 }
 
+.buttons-nothidden {
+  display: none;
+}
+
+@media (max-width: 880px) {
+  .blog-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .buttons-nothidden {
+    display: block;
+  }
+
+  #blog-post-title {
+    display: block;
+  }
+
+  #date-published {
+    display: block;
+  }
+
+  #chef-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+  }
+
+  #chef-img {
+    margin: auto;
+  }
+}
+
+@media (max-width: 680px) {
+  #chef-section {
+    grid-template-columns: 1fr;
+    
+  }
+
+  #author-section {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .documents ul {
+    padding-left: 10px;
+  }
+}
+
 /* Login page */
 
 .login-register {
@@ -629,6 +681,7 @@ form label {
   width: 80%;
   margin-top: 20px;
 }
+
 
 /* Edit page */
 
