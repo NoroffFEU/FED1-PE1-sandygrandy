@@ -39,11 +39,23 @@ nav a:hover {
   text-decoration: underline;
 }
 
-body.logged-in #login-nav {
+#login-nav {
   display: none;
 }
 
-body:not(.logged-in) #logout-nav {
+#logout-nav {
+  display: none;
+}
+
+body.logged-in #logout-nav {
+  display: inline;
+}
+
+body.logged-out #login-nav {
+  display: inline;
+}
+
+body:not(.logged-in) .create-button {
   display: none;
 }
 
@@ -63,29 +75,14 @@ body:not(.logged-in) #logout-nav {
   transition: transform 0.5s;
 }
 
-/* .slideshow div {
-    position: absolute;
-    width: 100%;
-    height: 100% 
-} */
-
-/* .slideshow div h1 {
-    font-family: abril fatface;
-    color: #FFFB99;
-    text-align: top;
-    position: absolute;
-    height: 20%;
-    top: 70%;
-    left: 10%;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 10px;
-    border-radius: 10px;
-} */
-
 .slideshow div {
   position: absolute;
   width: 100%;
   height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .slideshow div h1 {
@@ -99,7 +96,7 @@ body:not(.logged-in) #logout-nav {
 }
 
 @media (hover:none) { 
-    /* custom css for "touch targets" */
+    /* custom css for "touch targets to show banner title" */
     .slideshow div h1 {
         display: inline;
     }
@@ -173,12 +170,13 @@ body:not(.logged-in) #logout-nav {
   max-width: 100%;
   overflow: hidden;
 
-  gap: 40px;
+  gap: 20px;
 }
 
 .grid-item {
   justify-items: center;
   text-align: center;
+  padding: 10px;
 }
 
 .grid-item img {
@@ -186,6 +184,18 @@ body:not(.logged-in) #logout-nav {
   height: 80%;
 
   object-fit: cover;
+
+  border-radius: 15px;
+  padding-bottom: 5px;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.clickable:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
 }
 
 .button-style {
@@ -518,10 +528,6 @@ footer {
   color: black;
 }
 
-/* .hidden {
-    display: none;
-} */
-
 #ingredient-li li {
   color: #fffb99;
   list-style: square;
@@ -529,6 +535,10 @@ footer {
 }
 
 .buttons-nothidden {
+  display: none;
+}
+
+body:not(.logged-in) .admin-buttons {
   display: none;
 }
 
@@ -656,6 +666,26 @@ form label {
   margin-bottom: 20px;
 }
 
+@media (max-width: 760px) {
+  .login-register {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 450px) {
+  #login input {
+    width: 90%;
+  }
+
+  .login {
+    padding: 20px;
+  }
+  
+  .login-button {
+    width: 90%;
+  }
+}
+
 /* Register page */
 
 .register {
@@ -682,16 +712,31 @@ form label {
   margin-top: 20px;
 }
 
+@media (max-width: 630px) {
+  .register {
+    padding: 20px;
+    width: 60vw;
+  }
+
+  .register input {
+    width: 90%;
+  }
+}
+
+
 
 /* Edit page */
 
 .edit {
-  height: 60vh;
+  height: auto;
   padding: 60px;
   background-color: #394530;
 
-  display: grid;
-  grid-template-columns: 2fr 1fr;
+  display: block;
+}
+
+#edit {
+  height: 100%;
 }
 
 .edit label {
@@ -701,16 +746,18 @@ form label {
   margin-bottom: 20px;
 }
 
+.edit textarea, .edit input, .edit button {
+  width: 90%;
+}
+
 .edit textarea {
   display: block;
   margin-top: 10px;
   margin-bottom: 5px;
 
   padding: 5px;
-  width: 80%;
 
-  height: 50%;
-  max-height: 60%;
+  height: 200px;
 
   resize: none;
 
@@ -726,7 +773,6 @@ form label {
   margin-bottom: 25px;
 
   padding: 5px;
-  width: 80%;
 
   background-color: #2f3828;
   color: #fffb99;
@@ -735,6 +781,11 @@ form label {
 }
 
 .edit button {
-  width: 80%;
   margin-top: 10px;
+}
+
+@media (max-width: 480px) {
+  .edit {
+    padding: 20px;
+  }
 }

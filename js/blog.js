@@ -27,6 +27,10 @@ async function loadData() {
     document.getElementById('author-name').innerText = data.author.name
     document.getElementById('chef-img').src = data.author.avatar.url
     document.getElementById('author-description').innerText = data.author.bio
+
+    document.querySelectorAll('.edit-button').forEach((button) => {
+        button.href = '/post/edit.html?id=' + data.id
+    })
 }
 
 if (!!blogPostId) {

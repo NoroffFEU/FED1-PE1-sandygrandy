@@ -44,7 +44,7 @@ async function submit() {
 
         if (res.ok) {
             const parsedRes = await res.json()
-            window.location.href = `blog-post.html?id=${parsedRes.data.id}`
+            window.location.href = `post/index.html?id=${parsedRes.data.id}`
         } else {
             console.error('Error:', res)
         }
