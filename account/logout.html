@@ -1,6 +1,10 @@
 <script type="module">
-    import Api from '../js/Api.mjs'
+    import Api from '../js/api.mjs'
 
     Api.auth.logout()
-    window.location.href = '/'
+    if (window.location.hostname === 'localhost') {
+        window.location.href = '/'
+    } else {
+        window.location.href = '/FED1-PE1-sandygrandy/'
+    }
 </script>
