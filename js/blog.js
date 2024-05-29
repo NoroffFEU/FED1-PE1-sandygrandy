@@ -50,7 +50,7 @@ async function loadData() {
     document.getElementById('author-description').innerText = data.author.bio
 
     document.querySelectorAll('.edit-button').forEach((button) => {
-        button.href = '/post/edit.html?id=' + data.id
+        button.href = 'edit.html?id=' + data.id
     })
 
     document.querySelectorAll('.delete-button').forEach((button) => {
