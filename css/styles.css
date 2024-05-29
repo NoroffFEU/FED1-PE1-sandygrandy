@@ -39,20 +39,12 @@ nav a:hover {
   text-decoration: underline;
 }
 
-.login-nav {
-  display: none;
+body:not(.logged-out) .login-nav {
+  display: none !important;
 }
 
-.logout-nav {
-  display: none;
-}
-
-body.logged-in .logout-nav {
-  display: inline;
-}
-
-body.logged-out .login-nav {
-  display: inline;
+body:not(.logged-in) .logout-nav {
+  display: none !important;
 }
 
 body:not(.logged-in) .create-button {
@@ -286,7 +278,7 @@ footer {
   }
 }
 
-@media (max-width: 930px) {
+@media (max-width: 990px) {
   #logo {
     width: 200px;
   }
@@ -309,7 +301,7 @@ footer {
   }
 }
 
-@media (max-width: 780px) {
+@media (max-width: 835px) {
   .grid-layout {
     grid-template-columns: 1fr;
   }
@@ -346,7 +338,7 @@ footer {
   }
 }
 
-@media (max-width: 580px) {
+@media (max-width: 641px) {
   .social-media img {
     max-width: 30px;
   }
