@@ -1,4 +1,5 @@
-import Api from '../js/api.mjs';
+import Api from './api.mjs';
+import { getRootPath } from './helper.mjs';
 
 // Get input elements
 const loginForm = document.querySelector('form#login')
@@ -11,11 +12,7 @@ async function login(username, password) {
         const res = await Api.auth.login(username, password)
         if (!!res) {
             console.log('Logged in!', res)
-            if (window.location.hostname === 'localhost') {
-                window.location.href = '/'
-            } else {
-                window.location.href = '/FED1-PE1-sandygrandy/'
-            }
+            window.location.href = getRootPath()
         }
     } catch (error) {
         console.error(error)

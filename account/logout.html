@@ -1,10 +1,7 @@
 <script type="module">
     import Api from '../js/api.mjs'
+    import { getRootPath } from '../js/helper.mjs'
 
     Api.auth.logout()
-    if (window.location.hostname === 'localhost') {
-        window.location.href = '/'
-    } else {
-        window.location.href = '/FED1-PE1-sandygrandy/'
-    }
+    window.location.href = getRootPath()
 </script>

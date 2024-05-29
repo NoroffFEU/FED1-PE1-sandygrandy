@@ -1,4 +1,5 @@
 import Api from './api.mjs'
+import { getRootPath } from './helper.mjs'
 
 const urlParams = new URLSearchParams(window.location.search)
 const blogPostId = urlParams.get('id')
@@ -10,6 +11,26 @@ async function getBlogPost() {
     return parsedRes.data
   } else {
     console.error('Error fetching blog post')
+  }
+}
+
+async function deletePost() {
+  const deleteConfirmed = confirm('Are you sure you want to delete?')
+
+  if (!deleteConfirmed) {
+    return
+  }
+
+  try {
+    const res = await Api.blogs.delete(blogPostId)
+    if (res.ok) {
+        window.location.href = getRootPath()
+    } else {
+        const error = await res.json()
+        alert(error.errors[0].message)
+    }
+  } catch (error) {
+    console.error('Error:', error)
   }
 }
 
@@ -30,6 +51,12 @@ async function loadData() {
 
     document.querySelectorAll('.edit-button').forEach((button) => {
         button.href = '/post/edit.html?id=' + data.id
+    })
+
+    document.querySelectorAll('.delete-button').forEach((button) => {
+      button.addEventListener('click', () => {
+        deletePost()
+      })
     })
 }
 
