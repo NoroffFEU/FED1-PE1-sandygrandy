@@ -39,19 +39,19 @@ nav a:hover {
   text-decoration: underline;
 }
 
-#login-nav {
+.login-nav {
   display: none;
 }
 
-#logout-nav {
+.logout-nav {
   display: none;
 }
 
-body.logged-in #logout-nav {
+body.logged-in .logout-nav {
   display: inline;
 }
 
-body.logged-out #login-nav {
+body.logged-out .login-nav {
   display: inline;
 }
 
@@ -259,7 +259,7 @@ footer {
   text-decoration: underline;
 }
 
-#logo-small {
+.logo-small {
   display: none;
 }
 
@@ -281,7 +281,7 @@ footer {
     top: 80px;
   }
 
-  #logo-small {
+  .logo-small {
     display: none;
   }
 }
@@ -304,7 +304,7 @@ footer {
     max-width: 60px;
   }
 
-  #logo-small {
+  .logo-small {
     display: none;
   }
 }
@@ -339,7 +339,7 @@ footer {
     display: none;
   }
 
-  #logo-small {
+  .logo-small {
     display: block;
     width: 50px;
     
@@ -351,7 +351,7 @@ footer {
     max-width: 30px;
   }
 
-  #logo-small {
+  .logo-small {
     display: none;
   }
 
