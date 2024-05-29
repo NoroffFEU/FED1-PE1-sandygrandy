@@ -11,7 +11,11 @@ async function login(username, password) {
         const res = await Api.auth.login(username, password)
         if (!!res) {
             console.log('Logged in!', res)
-            window.location.href = '/'
+            if (window.location.hostname === 'localhost') {
+                window.location.href = '/'
+            } else {
+                window.location.href = '/FED1-PE1-sandygrandy/'
+            }
         }
     } catch (error) {
         console.error(error)
